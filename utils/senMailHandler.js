@@ -15,13 +15,27 @@ const transporter = nodemailer.createTransport({
 
 // Send an email using async/await;
 module.exports = {
-    sendMail: async function (to,url) {
-        const info = await transporter.sendMail({
-            from: 'admin@hehehe.com',
-            to: to,
-            subject: "reset pass",
-            text: "click vo day de doi pass", // Plain-text version of the message
-            html: "click vo <a href="+url+">day</a> de doi pass", // HTML version of the message
-        });
+    sendMail: async function (to, content) {
+        // Nếu content là URL (cho reset password)
+        if (content.startsWith('http')) {
+            const info = await transporter.sendMail({
+                from: 'admin@hehehe.com',
+                to: to,
+                subject: "Reset Password",
+                text: "Click vào đây để đổi password", // Plain-text version of the message
+                html: "Click vào <a href=" + content + ">đây</a> để đổi password", // HTML version of the message
+            });
+            return info;
+        } else {
+            // Nếu content là text thông thường (cho import user)
+            const info = await transporter.sendMail({
+                from: 'admin@hehehe.com',
+                to: to,
+                subject: "Thông tin tài khoản mới",
+                text: content,
+                html: content.replace(/\n/g, '<br>'),
+            });
+            return info;
+        }
     }
 }
