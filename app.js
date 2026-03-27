@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-mongoose.connect('mongodb://localhost:27017/NNPTUD-C6');
+mongoose.connect('mongodb+srv://nguyenphuc29092004_db_user:123456@cluster0.eqxaamj.mongodb.net/NNPTUD-C6?retryWrites=true&w=majority&appName=Cluster0');
 mongoose.connection.on('connected', function () {
   console.log("connected");
 })
