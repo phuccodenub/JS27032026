@@ -8,7 +8,7 @@ const transporter = nodemailer.createTransport({
     secure: false, // Use true for port 465, false for port 587
     auth: {
         user: "1ebd7935984e64",
-        pass: "****7909",
+        pass: "06d5ef81c27909",
     },
 });
 //http://localhost:3000/api/v1/auth/resetpassword/a87edf6812f235e997c7b751422e6b2f5cd95aa994c55ebeeb931ca67214d645
