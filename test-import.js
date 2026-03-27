@@ -1,11 +1,10 @@
 const FormData = require('form-data');
 const fs = require('fs');
 const path = require('path');
+const fetch = require('node-fetch');
 
 async function testImportUsers() {
     try {
-        const fetch = (await import('node-fetch')).default;
-        
         const form = new FormData();
         const filePath = path.join(__dirname, 'sample_users.xlsx');
         form.append('file', fs.createReadStream(filePath));
